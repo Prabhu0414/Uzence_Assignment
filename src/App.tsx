@@ -1,10 +1,14 @@
 import './App.css'
+import DataTable from './components/DataTable';
 import InputFieldDemo from './components/InputField/InputFieldDemo';
 
 
 function App() {
   return (
-    <InputFieldDemo />
+    <>
+      <InputFieldDemo />
+      <DataTable data={[]} columns={[]} />
+    </>
   )
 }
 
