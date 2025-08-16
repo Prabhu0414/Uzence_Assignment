@@ -217,10 +217,8 @@ const meta: Meta<typeof DataTable> = {
 export default meta;
 type Story = StoryObj<typeof DataTable>;
 
-
 // Basic Stories
 export const Default: Story = {
-  render: (args) => <DataTable<User> {...args} />, 
   args: {
     data: sampleUsers,
     columns: userColumns,
@@ -228,7 +226,6 @@ export const Default: Story = {
 };
 
 export const WithSelection: Story = {
-  render: (args) => <DataTable<User> {...args} />, 
   args: {
     data: sampleUsers,
     columns: userColumns,
@@ -243,34 +240,7 @@ export const WithSelection: Story = {
   },
 };
 
-export const WithOnRowSelect: Story = {
-  render: (args) => {
-    const [selected, setSelected] = useState<User[]>([]);
-    return (
-      <div>
-        <DataTable<User> {...args} onRowSelect={setSelected} />
-        <div style={{ marginTop: 16 }}>
-          <strong>Selected Rows:</strong> {selected.map(u => u.name).join(', ') || 'None'}
-        </div>
-      </div>
-    );
-  },
-  args: {
-    data: sampleUsers,
-    columns: userColumns,
-    selectable: true,
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "Shows the selected rows using the onRowSelect callback.",
-      },
-    },
-  },
-};
-
 export const ProductsTable: Story = {
-  render: (args) => <DataTable<Product> {...args} />, 
   args: {
     data: sampleProducts,
     columns: productColumns,
@@ -288,7 +258,6 @@ export const ProductsTable: Story = {
 
 // Feature Stories
 export const LoadingState: Story = {
-  render: (args) => <DataTable<User> {...args} />, 
   args: {
     data: [],
     columns: userColumns,
@@ -305,7 +274,6 @@ export const LoadingState: Story = {
 };
 
 export const EmptyState: Story = {
-  render: (args) => <DataTable<User> {...args} />, 
   args: {
     data: [],
     columns: userColumns,
@@ -320,81 +288,7 @@ export const EmptyState: Story = {
   },
 };
 
-export const SingleRow: Story = {
-  render: (args) => <DataTable<User> {...args} />, 
-  args: {
-    data: [sampleUsers[0]],
-    columns: userColumns,
-    selectable: true,
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "Table with only one row.",
-      },
-    },
-  },
-};
-
-export const NoColumns: Story = {
-  render: (args) => <DataTable<User> {...args} />, 
-  args: {
-    data: sampleUsers,
-    columns: [],
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "Table with no columns defined.",
-      },
-    },
-  },
-};
-
-export const MinimalTable: Story = {
-  render: (args) => <DataTable<{id: number, name: string}> {...args} />, 
-  args: {
-    data: sampleUsers.map(({ id, name }) => ({ id, name })),
-    columns: [
-      { key: 'id', title: 'ID', sortable: true },
-      { key: 'name', title: 'Name', sortable: true },
-    ],
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "Table with minimal columns and data.",
-      },
-    },
-  },
-};
-
-export const CustomCellRender: Story = {
-  render: (args) => <DataTable<User> {...args} />, 
-  args: {
-    data: sampleUsers,
-    columns: [
-      { key: 'name', title: 'Name', sortable: true },
-      { key: 'email', title: 'Email', sortable: true },
-      {
-        key: 'role',
-        title: 'Role',
-        sortable: true,
-        render: (value: string) => <span style={{ color: value === 'Admin' ? 'red' : 'black' }}>{value}</span>,
-      },
-    ],
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "Table with custom cell rendering for the 'role' column.",
-      },
-    },
-  },
-};
-
 export const CompactTable: Story = {
-  render: (args) => <DataTable<User> {...args} />, 
   args: {
     data: sampleUsers,
     columns: userColumns,
@@ -411,7 +305,6 @@ export const CompactTable: Story = {
 };
 
 export const StickyHeader: Story = {
-  render: (args) => <DataTable<User> {...args} />, 
   args: {
     data: sampleUsers,
     columns: userColumns,
