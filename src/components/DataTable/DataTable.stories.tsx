@@ -219,18 +219,11 @@ type Story = StoryObj<typeof DataTable>;
 
 // Basic Stories
 export const Default: Story = {
-  args: {
-    data: sampleUsers,
-    columns: userColumns,
-  },
+  render: () => <DataTable<User> data={sampleUsers} columns={userColumns} />, 
 };
 
 export const WithSelection: Story = {
-  args: {
-    data: sampleUsers,
-    columns: userColumns,
-    selectable: true,
-  },
+  render: () => <DataTable<User> data={sampleUsers} columns={userColumns} selectable />, 
   parameters: {
     docs: {
       description: {
@@ -241,12 +234,7 @@ export const WithSelection: Story = {
 };
 
 export const ProductsTable: Story = {
-  args: {
-    data: sampleProducts,
-    columns: productColumns,
-    selectable: true,
-    striped: true,
-  },
+  render: () => <DataTable<Product> data={sampleProducts} columns={productColumns} selectable striped />, 
   parameters: {
     docs: {
       description: {
@@ -258,12 +246,7 @@ export const ProductsTable: Story = {
 
 // Feature Stories
 export const LoadingState: Story = {
-  args: {
-    data: [],
-    columns: userColumns,
-    loading: true,
-    loadingMessage: "Fetching users...",
-  },
+  render: () => <DataTable<User> data={[]} columns={userColumns} loading loadingMessage="Fetching users..." />, 
   parameters: {
     docs: {
       description: {
@@ -274,11 +257,7 @@ export const LoadingState: Story = {
 };
 
 export const EmptyState: Story = {
-  args: {
-    data: [],
-    columns: userColumns,
-    emptyMessage: "No users found. Try adjusting your search criteria.",
-  },
+  render: () => <DataTable<User> data={[]} columns={userColumns} emptyMessage="No users found. Try adjusting your search criteria." />, 
   parameters: {
     docs: {
       description: {
@@ -289,12 +268,7 @@ export const EmptyState: Story = {
 };
 
 export const CompactTable: Story = {
-  args: {
-    data: sampleUsers,
-    columns: userColumns,
-    compact: true,
-    striped: true,
-  },
+  render: () => <DataTable<User> data={sampleUsers} columns={userColumns} compact striped />, 
   parameters: {
     docs: {
       description: {
@@ -305,13 +279,7 @@ export const CompactTable: Story = {
 };
 
 export const StickyHeader: Story = {
-  args: {
-    data: sampleUsers,
-    columns: userColumns,
-    stickyHeader: true,
-    maxHeight: "400px",
-    striped: true,
-  },
+  render: () => <DataTable<User> data={sampleUsers} columns={userColumns} stickyHeader maxHeight="400px" striped />, 
   parameters: {
     docs: {
       description: {

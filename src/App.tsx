@@ -20,7 +20,7 @@ const userColumns = [
     key: 'status',
     title: 'Status',
     sortable: true,
-    render: (value) => (
+    render: (value: string) => (
       <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
         value === 'active'
           ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
@@ -35,7 +35,7 @@ const userColumns = [
     key: 'lastLogin',
     title: 'Last Login',
     sortable: true,
-    render: (value) => new Date(value).toLocaleDateString(),
+    render: (value: string) => new Date(value).toLocaleDateString(),
   },
 ];
 
