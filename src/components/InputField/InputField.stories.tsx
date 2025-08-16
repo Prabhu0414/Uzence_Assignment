@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import InputField from "./InputField";
 
 // Theme decorator for Storybook
-const withTheme = (Story: any, context: any) => {
+const withTheme = (Story: any) => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {

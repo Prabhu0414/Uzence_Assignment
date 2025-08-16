@@ -16,7 +16,7 @@ const DataTable = <T extends Record<string, any>>({
   hoverable = true,
   compact = false,
 }: DataTableProps<T>) => {
-  const [state, setState] = useState<DataTableState<T>>({
+  const [state, setState] = useState<DataTableState>({
     selectedRows: new Set(),
     sortConfig: null,
     currentPage: 1,
@@ -30,7 +30,7 @@ const DataTable = <T extends Record<string, any>>({
 
   // Handle sorting
   const handleSort = useCallback((key: keyof T) => {
-    setState(prev => ({
+    setState((prev: DataTableState) => ({
       ...prev,
       sortConfig: prev.sortConfig?.key === key && prev.sortConfig.direction === 'asc'
         ? { key, direction: 'desc' }
@@ -43,8 +43,8 @@ const DataTable = <T extends Record<string, any>>({
     if (!state.sortConfig) return data;
 
     return [...data].sort((a, b) => {
-      const aValue = a[state.sortConfig!.key];
-      const bValue = b[state.sortConfig!.key];
+  const aValue = a[state.sortConfig!.key as string];
+  const bValue = b[state.sortConfig!.key as string];
 
       if (aValue === bValue) return 0;
       if (aValue === null || aValue === undefined) return 1;
@@ -66,7 +66,7 @@ const DataTable = <T extends Record<string, any>>({
       newSelectedRows.delete(rowId);
     }
 
-    setState(prev => ({ ...prev, selectedRows: newSelectedRows }));
+    setState((prev: DataTableState) => ({ ...prev, selectedRows: newSelectedRows }));
 
     // Call parent callback with selected rows
     if (onRowSelect) {
@@ -79,10 +79,10 @@ const DataTable = <T extends Record<string, any>>({
   const handleSelectAll = useCallback((checked: boolean) => {
     if (checked) {
       const allRowIds = sortedData.map((row, index) => getRowId(row, index));
-      setState(prev => ({ ...prev, selectedRows: new Set(allRowIds) }));
+      setState((prev: DataTableState) => ({ ...prev, selectedRows: new Set(allRowIds) }));
       if (onRowSelect) onRowSelect(sortedData);
     } else {
-      setState(prev => ({ ...prev, selectedRows: new Set() }));
+      setState((prev: DataTableState) => ({ ...prev, selectedRows: new Set() }));
       if (onRowSelect) onRowSelect([]);
     }
   }, [sortedData, onRowSelect, getRowId]);
