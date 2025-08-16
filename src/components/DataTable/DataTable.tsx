@@ -1,5 +1,5 @@
-import React, { useState, useMemo, useCallback } from 'react';
-import type { DataTableProps, Column, SortConfig, DataTableState } from './DataTable.types';
+import { useState, useMemo, useCallback } from 'react';
+import type { DataTableProps, Column, DataTableState } from './DataTable.types';
 
 const DataTable = <T extends Record<string, any>>({
   data,

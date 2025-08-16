@@ -115,7 +115,7 @@ const productColumns: Column<Product>[] = [
 ];
 
 // Theme decorator for Storybook
-const withTheme = (Story: any, context: any) => {
+const withTheme = (Story: any) => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {

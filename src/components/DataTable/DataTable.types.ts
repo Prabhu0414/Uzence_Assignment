@@ -29,7 +29,7 @@ export interface DataTableProps<T> {
   compact?: boolean;
 }
 
-export interface DataTableState<T> {
+export interface DataTableState {
   selectedRows: Set<string | number>;
   sortConfig: SortConfig | null;
   currentPage: number;
