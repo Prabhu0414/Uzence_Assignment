@@ -403,59 +403,64 @@ export const SizeComparison: Story = {
     <div className="space-y-8 w-full max-w-2xl">
       <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
         <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">Size Comparison</h3>
-        <p className="text-sm text-blue-700 dark:text-blue-300">Notice the dramatic height, padding, text size, and icon size differences</p>
+        <p className="text-sm text-blue-700 dark:text-blue-300">
+          <strong>Visual Guide:</strong> Each input below is wrapped in a colored box, with a ruler and font size label. If you don't see a clear difference, check your <code>InputField</code> component's size styles.
+        </p>
       </div>
-      
       <div className="grid grid-cols-1 gap-8">
-        <div className="border-l-4 border-blue-500 pl-4 bg-blue-50/50 dark:bg-blue-900/10 p-4 rounded-r-lg">
-          <div className="mb-2">
-            <span className="inline-block px-2 py-1 bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-200 text-xs font-medium rounded">
-              Small (sm) - 32px height
-            </span>
+        {/* Small */}
+        <div className="border-l-4 border-blue-500 pl-4 bg-blue-50/50 dark:bg-blue-900/10 p-4 rounded-r-lg flex items-center gap-6">
+          <div className="flex flex-col items-center mr-4">
+            <div style={{height: 32, width: 2, background: '#3b82f6', marginBottom: 4}} />
+            <span className="text-xs text-blue-700">32px</span>
           </div>
-          <InputField
-            label="Small Input (sm) - 32px height"
-            placeholder="Small size input"
-            size="sm"
-            variant="outlined"
-            clearable
-            value="Small text"
-            helperText="Compact and minimal - 32px height, 12px text, 8px padding"
-          />
+          <div className="flex-1">
+            <InputField
+              label={<span>Small Input <span className="text-blue-500">(sm)</span></span>}
+              placeholder="Small size input"
+              size="sm"
+              variant="outlined"
+              clearable
+              value="Small text"
+              helperText={<span className="text-xs">Font: 12px, Padding: 8px</span>}
+            />
+          </div>
         </div>
-        
-        <div className="border-l-4 border-green-500 pl-4 bg-green-50/50 dark:bg-green-900/10 p-4 rounded-r-lg">
-          <div className="mb-2">
-            <span className="inline-block px-2 py-1 bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-200 text-xs font-medium rounded">
-              Medium (md) - 48px height
-            </span>
+        {/* Medium */}
+        <div className="border-l-4 border-green-500 pl-4 bg-green-50/50 dark:bg-green-900/10 p-4 rounded-r-lg flex items-center gap-6">
+          <div className="flex flex-col items-center mr-4">
+            <div style={{height: 48, width: 2, background: '#22c55e', marginBottom: 4}} />
+            <span className="text-xs text-green-700">48px</span>
           </div>
-          <InputField
-            label="Medium Input (md) - 48px height"
-            placeholder="Medium size input"
-            size="md"
-            variant="outlined"
-            clearable
-            value="Medium text"
-            helperText="Balanced proportions - 48px height, 16px text, 16px padding"
-          />
+          <div className="flex-1">
+            <InputField
+              label={<span>Medium Input <span className="text-green-500">(md)</span></span>}
+              placeholder="Medium size input"
+              size="md"
+              variant="outlined"
+              clearable
+              value="Medium text"
+              helperText={<span className="text-xs">Font: 16px, Padding: 16px</span>}
+            />
+          </div>
         </div>
-        
-        <div className="border-l-4 border-purple-500 pl-4 bg-purple-50/50 dark:bg-purple-900/10 p-4 rounded-r-lg">
-          <div className="mb-2">
-            <span className="inline-block px-2 py-1 bg-purple-100 dark:bg-purple-800 text-purple-800 dark:text-purple-200 text-xs font-medium rounded">
-              Large (lg) - 64px height
-            </span>
+        {/* Large */}
+        <div className="border-l-4 border-purple-500 pl-4 bg-purple-50/50 dark:bg-purple-900/10 p-4 rounded-r-lg flex items-center gap-6">
+          <div className="flex flex-col items-center mr-4">
+            <div style={{height: 64, width: 2, background: '#a21caf', marginBottom: 4}} />
+            <span className="text-xs text-purple-700">64px</span>
           </div>
-          <InputField
-            label="Large Input (lg) - 64px height"
-            placeholder="Large size input"
-            size="lg"
-            variant="outlined"
-            clearable
-            value="Large text"
-            helperText="Spacious and prominent - 64px height, 20px text, 24px padding"
-          />
+          <div className="flex-1">
+            <InputField
+              label={<span>Large Input <span className="text-purple-500">(lg)</span></span>}
+              placeholder="Large size input"
+              size="lg"
+              variant="outlined"
+              clearable
+              value="Large text"
+              helperText={<span className="text-xs">Font: 20px, Padding: 24px</span>}
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -463,7 +468,7 @@ export const SizeComparison: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Side-by-side comparison of all three sizes. Notice the dramatic height, padding, text size, and icon size differences. Each size has a different colored border and background for easy identification.",
+        story: "Side-by-side comparison of all three sizes. Each input is wrapped in a colored box, with a vertical ruler and font size label for clarity. If you don't see a clear difference, check your InputField component's size styles.",
       },
     },
   },
